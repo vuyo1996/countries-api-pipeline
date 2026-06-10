@@ -90,8 +90,17 @@ print(countries_df.head())
 
 print("\n")
 
-logging.info(countries_df.info())
+countries_df.info()
 
 print("\n")
 
-logging.info(countries_df.describe())
+logging.info(f"\n{countries_df.describe()}")
+
+countries_df.to_sql("countries", 
+                    engine, 
+                    if_exists="append", 
+                    index=False)
+
+print("\n")
+
+logging.info("Data successfully inserted into the 'countries' table in the database.")
